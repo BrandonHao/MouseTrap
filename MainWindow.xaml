@@ -1,0 +1,29 @@
+﻿<Window x:Class="MouseTrap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseTrap"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Rectangle Fill="#FFBEE8FB" HorizontalAlignment="Left" Stroke="Black" Width="795" Margin="0,0,0,0.5"/>
+        <Rectangle Fill="#FFEBEBEB" HorizontalAlignment="Left" Height="392" VerticalAlignment="Top" Width="497" Margin="275,10,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="35,24,0,0" FontFamily="Nirmala UI" FontSize="18" Width="159"><Run Text="Select COM Port:"/></TextBlock>
+        <ComboBox x:Name="ComSelector" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="35,64,0,0" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="35,106,0,0" Foreground="Black" FontFamily="Nirmala UI Semilight" BorderBrush="{x:Null}" FontSize="14" Click="Connect_Button_Click"/>
+        <Button x:Name="ExitButton" Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="35,360,0,0" Foreground="Black" FontFamily="Nirmala UI Semilight" BorderBrush="{x:Null}" FontSize="14" Click="Exit_Button_Click"/>
+        <TextBox x:Name="MinVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Min:" VerticalAlignment="Top" Margin="301,50,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
+        <TextBox x:Name="MaxVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Max:" VerticalAlignment="Top" Margin="301,100,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
+        <TextBox x:Name="VoltBox" HorizontalAlignment="Left" Height="23" Margin="395,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,150,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Bat. Voltage"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="MACAddressBox" HorizontalAlignment="Left" Height="23" Margin="395,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="MAC Address:" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Leave Min and Max voltage empty for minimum voltage 3000 mV and no maximum voltage. All values measured in mV." VerticalAlignment="Top" Margin="532,48,0,0" Height="76" Width="222" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,250,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Lot Num:"/></TextBlock>
+        <TextBox x:Name="LotBox" HorizontalAlignment="Left" Height="23" Margin="395,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+
+    </Grid>
+</Window>
