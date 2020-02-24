@@ -1,0 +1,1 @@
+Included MDYMOBarcode.dll and PrintingSupportLibrary.dll, also expanded stacktrace reporting on crash - 02-24-2020
