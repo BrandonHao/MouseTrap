@@ -6,9 +6,13 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Timers;
-using System.Windows.Media;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.Windows.Threading;
 using DYMO.Label.Framework;
+using ZXing;
+using System.Windows.Input;
+
 namespace MouseTrap
 {
     /// <summary>
@@ -19,6 +23,7 @@ namespace MouseTrap
         private SerialPort _dataPort;
 
         private string stringData = "";
+        private string _appPath;
 
         private Stopwatch _timeoutStopwatch;
 
@@ -34,10 +39,18 @@ namespace MouseTrap
         {
             InitializeComponent();
             Dispatcher.UnhandledException += DispatcherOnUnhandledException;
+            EventManager.RegisterClassHandler(typeof(Window), Keyboard.KeyDownEvent, new KeyEventHandler(OnKeyPress), true);
+
             Title = "Mouse Trap QR Print";
+            string _appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var ports = SerialPort.GetPortNames();
             ComSelector.Items.Clear();
-            _label = Framework.Open(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Barcode.Label");
+            if (!Directory.Exists(_appPath + "\\temp"))
+            {
+                Directory.CreateDirectory(_appPath + "\\temp");
+            }
+
+            _label = Framework.Open(_appPath + "\\Barcode.Label");
             foreach (var printer in Framework.GetPrinters())
             {
                 _printer = printer;
@@ -113,6 +126,31 @@ namespace MouseTrap
             Application.Current.Shutdown();
         }
 
+        private void OnKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F4)
+            {
+                MinVoltBox.IsEnabled = !MinVoltBox.IsEnabled;
+                MaxVoltBox.IsEnabled = !MaxVoltBox.IsEnabled;
+                if(MinVoltBox.Visibility == Visibility.Hidden)
+                {
+                    MinVoltBox.Visibility = Visibility.Visible;
+                    MaxVoltBox.Visibility = Visibility.Visible;
+                    MinVoltBlock.Visibility = Visibility.Visible;
+                    MaxVoltBlock.Visibility = Visibility.Visible;
+                    DescBlock.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    MinVoltBox.Visibility = Visibility.Hidden;
+                    MaxVoltBox.Visibility = Visibility.Hidden;
+                    MinVoltBlock.Visibility = Visibility.Hidden;
+                    MaxVoltBlock.Visibility = Visibility.Hidden;
+                    DescBlock.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             int dataLength = _dataPort.BytesToRead;
@@ -132,8 +170,8 @@ namespace MouseTrap
                 t.Enabled = true;
                 Dispatcher?.Invoke(() =>
                 {
-                    VoltBox.Background = Brushes.White;
-                    LotBox.Background = Brushes.White;
+                    VoltBox.Background = System.Windows.Media.Brushes.White;
+                    LotBox.Background = System.Windows.Media.Brushes.White;
                     MACAddressBox.Text = string.Empty;
                     VoltBox.Text = string.Empty;
                 });
@@ -175,7 +213,7 @@ namespace MouseTrap
                 try
                 {
                     int minVoltage = 3000;
-                    int maxVoltage = Int32.MaxValue;
+                    int maxVoltage = int.MaxValue;
                     int measuredVoltage = Convert.ToInt32(voltage);
                     if (minVoltString != string.Empty)
                     {
@@ -189,26 +227,44 @@ namespace MouseTrap
 
                     if (lotNum.Equals(string.Empty))
                     {
-                        Dispatcher.Invoke(() => LotBox.Background = Brushes.Red);
+                        Dispatcher.Invoke(() => LotBox.Background = System.Windows.Media.Brushes.Red);
                         MessageBox.Show("Please specify a lot number!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
 
                     if (minVoltage < measuredVoltage && measuredVoltage < maxVoltage)
                     {
-                        ILabelWriterPrintParams printParams = null;
                         ILabelWriterPrinter labelWriterPrinter = _printer as ILabelWriterPrinter;
                         _label.SetObjectText("TEXT", macAddress);
                         macAddress += "+" + lotNum;
+
+                        var QCwriter = new BarcodeWriter();
+                        QCwriter.Format = BarcodeFormat.QR_CODE;
+                        var result = QCwriter.Write(macAddress);
+                        string imagePath = _appPath + "\\temp\\qrcode.png";
+                        var barcodeBitmap = new Bitmap(result);
+                        using (MemoryStream memory = new MemoryStream())
+                        {
+                            using (FileStream fs = new FileStream(imagePath,
+                               FileMode.Create, FileAccess.ReadWrite))
+                            {
+                                barcodeBitmap.Save(memory, ImageFormat.Png);
+                                byte[] bytes = memory.ToArray();
+                                fs.Write(bytes, 0, bytes.Length);
+                            }
+                        }
+                        var imageStream = Application.GetResourceStream(new Uri("qrcode.png", UriKind.Relative)).Stream;
+
+                        _label.SetImagePngData("GRAPHIC", imageStream);
                         _label.SetObjectText("BARCODE", macAddress);
                         _label.Print(_printer, null);
                     }
                     else
                     {
-                        Dispatcher.Invoke(() => VoltBox.Background = Brushes.Red);
+                        Dispatcher.Invoke(() => VoltBox.Background = System.Windows.Media.Brushes.Red);
                     }
                 }
-                catch (FormatException)
+                catch (System.FormatException)
                 {
                     MessageBox.Show("Specified voltage range was not an integer value!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
