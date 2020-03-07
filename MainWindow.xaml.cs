@@ -43,47 +43,28 @@ namespace MouseTrap
             _appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var ports = SerialPort.GetPortNames();
             ComSelector.Items.Clear();
+
+            foreach (var name in ports)
+            {
+                ComSelector.Items.Add(name);
+            }
+
+            ProductSelector.Items.Clear();
+            ProductSelector.Items.Add("IQ 24/27");
+            ProductSelector.Items.Add("IQ EXPRESS");
+            ProductSelector.Items.Add("IQ RAT TRAP");
+
             if (!Directory.Exists(_appPath + "\\temp"))
             {
                 Directory.CreateDirectory(_appPath + "\\temp");
             }
-            var qCwriter = new BarcodeWriter
-            {
-                Format = BarcodeFormat.QR_CODE,
-                Options = new QrCodeEncodingOptions
-                {
-                    Width = 300,
-                    Height = 300
-                }
-            };
-            qCwriter.Options.Hints[EncodeHintType.MARGIN] = 1;
-            var result = qCwriter.Write("12345678901");
-            var imagePath = _appPath + "\\temp\\qrcode.png";
-            var barcodeBitmap = new Bitmap(result);
-            if (File.Exists(imagePath))
-            {
-                File.Delete(imagePath);
-            }
-            using (var memory = new MemoryStream())
-            {
-                using (FileStream fs = new FileStream(imagePath,
-                    FileMode.Create, FileAccess.ReadWrite))
-                {
-                    barcodeBitmap.Save(memory, ImageFormat.Png);
-                    byte[] bytes = memory.ToArray();
-                    fs.Write(bytes, 0, bytes.Length);
-                }
-            }
+            
             _label = Framework.Open(_appPath + "\\Barcode.Label");
             foreach (var printer in Framework.GetPrinters())
             {
                 _printer = printer;
             }
 
-            foreach (var name in ports)
-            {
-                ComSelector.Items.Add(name);
-            }
 
             _dataPort = new SerialPort();
         }
@@ -149,7 +130,7 @@ namespace MouseTrap
 
         private void OnKeyPress(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F4)
+            if (e.Key == Key.Tab)
             {
                 MinVoltBox.IsEnabled = !MinVoltBox.IsEnabled;
                 MaxVoltBox.IsEnabled = !MaxVoltBox.IsEnabled;
@@ -209,6 +190,8 @@ namespace MouseTrap
                 int startIndex = _stringData.IndexOf("MACADDRESS:") + "MACADDRESS:".Length;
                 int endIndex = _stringData.IndexOf("BATT:") + "BATT:".Length;
                 string voltage = _stringData.Substring(endIndex);
+                string productType = string.Empty;
+                string Date = DateTime.Now.ToString("MMddyy");
                 string macAddress = _stringData.Substring(startIndex, endIndex - startIndex - "BATT:".Length);
                 string minVoltString = "";
                 Dispatcher?.Invoke(() => minVoltString = MinVoltBox.Text);
@@ -223,7 +206,16 @@ namespace MouseTrap
                 {
                     MACAddressBox.Text = macAddress;
                     VoltBox.Text = voltage;
+                    productType = ProductSelector.Text;
+                    DateBox.Text = Date;
                 });
+
+                if(productType.Equals(string.Empty))
+                {
+                    MessageBox.Show("Please specify a Product Type!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    _stringData = string.Empty;
+                    return;
+                }
 
                 macAddress = macAddress.Trim();
                 macAddress = macAddress.Replace("\r", "");
@@ -233,7 +225,7 @@ namespace MouseTrap
                 macAddress = string.Join("", arr);
                 try
                 {
-                    int minVoltage = 3000;
+                    int minVoltage = 2000;
                     int maxVoltage = int.MaxValue;
                     int measuredVoltage = Convert.ToInt32(voltage);
                     if (minVoltString != string.Empty)
@@ -250,15 +242,28 @@ namespace MouseTrap
                     {
                         Dispatcher?.Invoke(() => LotBox.Background = System.Windows.Media.Brushes.Red);
                         MessageBox.Show("Please specify a lot number!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        _stringData = string.Empty;
                         return;
                     }
 
                     if (minVoltage < measuredVoltage && measuredVoltage < maxVoltage)
                     {
                         _label.SetObjectText("TEXT", macAddress);
-                        macAddress += "+" + lotNum;
-
-                        var qCwriter = new BarcodeWriter {Format = BarcodeFormat.QR_CODE};
+                        macAddress = "Serial # : " + macAddress;
+                        macAddress += "\nProduct : " + productType.Replace("IQ ", "");
+                        macAddress += "\nCustomer # : +" + lotNum;
+                        macAddress += "\nDate : " + Date;
+                        
+                        var qCwriter = new BarcodeWriter
+                        {
+                            Format = BarcodeFormat.QR_CODE,
+                            Options = new QrCodeEncodingOptions
+                            {
+                                Width = 1000,
+                                Height = 1000
+                            }
+                        };
+                        qCwriter.Options.Hints[EncodeHintType.MARGIN] = 0;
                         var result = qCwriter.Write(macAddress);
                         var imagePath = _appPath + "\\temp\\qrcode.png";
                         var barcodeBitmap = new Bitmap(result);
@@ -277,10 +282,10 @@ namespace MouseTrap
                             }
                         }
 
-                        var imageStream = Application.GetResourceStream(new Uri("\\temp\\qrcode.png", UriKind.Relative))?.Stream;
+                        var imageStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                         _label.SetImagePngData("GRAPHIC", imageStream);
-                        _label.SetObjectText("BARCODE", macAddress);
                         _label.Print(_printer, null);
+                        imageStream.Close();
                     }
                     else
                     {
@@ -294,8 +299,9 @@ namespace MouseTrap
             }
             catch (ArgumentOutOfRangeException)
             {
-                if (_stringData.Contains("?"))
+                if (_stringData.Contains("?") || _stringData.Contains("SENSOR"))
                 {
+                    _stringData = string.Empty;
                     return;
                 }
                 MessageBox.Show("The data transmission was interrupted or corrupt! Please try again.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
