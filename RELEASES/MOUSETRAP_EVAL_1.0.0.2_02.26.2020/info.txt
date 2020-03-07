@@ -1,0 +1,1 @@
+Evaluation build - New QR code format to increase size, added hide voltage limits to keyboard shortcut f4, and added bug fixes - 02-26-2020

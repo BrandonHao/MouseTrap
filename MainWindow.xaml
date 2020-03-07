@@ -19,11 +19,13 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="MAC Address:" VerticalAlignment="Top" Margin="301,100,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,150,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Lot Num:"/></TextBlock>
         <TextBox x:Name="LotBox" HorizontalAlignment="Left" Height="23" Margin="395,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
-        <TextBox x:Name="MinVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
-        <TextBlock x:Name="MinVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Min:" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
-        <TextBox x:Name="MaxVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
-        <TextBlock x:Name="MaxVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Max:" VerticalAlignment="Top" Margin="301,250,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
-        <TextBlock x:Name="DescBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Leave Min and Max voltage empty for minimum voltage 3000 mV and no maximum voltage. All values measured in mV." VerticalAlignment="Top" Margin="532,198,0,0" Height="76" Width="222" FontFamily="Nirmala UI Semilight" FontSize="14" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Date:"/></TextBlock>
+        <TextBox x:Name="DateBox" HorizontalAlignment="Left" Height="23" Margin="395,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBox x:Name="MinVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
+        <TextBlock x:Name="MinVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Min:" VerticalAlignment="Top" Margin="301,250,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
+        <TextBox x:Name="MaxVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
+        <TextBlock x:Name="MaxVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Max:" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
+        <TextBlock x:Name="DescBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Leave Min and Max voltage empty for minimum voltage 3000 mV and no maximum voltage. All values measured in mV." VerticalAlignment="Top" Margin="532,298,0,0" Height="76" Width="222" FontFamily="Nirmala UI Semilight" FontSize="14" Visibility="Hidden"/>
 
     </Grid>
 </Window>
