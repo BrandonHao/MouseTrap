@@ -130,7 +130,7 @@ namespace MouseTrap
 
         private void OnKeyPress(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Tab)
+            if (e.Key == Key.F4)
             {
                 MinVoltBox.IsEnabled = !MinVoltBox.IsEnabled;
                 MaxVoltBox.IsEnabled = !MaxVoltBox.IsEnabled;
@@ -225,7 +225,7 @@ namespace MouseTrap
                 macAddress = string.Join("", arr);
                 try
                 {
-                    int minVoltage = 2000;
+                    int minVoltage = 3000;
                     int maxVoltage = int.MaxValue;
                     int measuredVoltage = Convert.ToInt32(voltage);
                     if (minVoltString != string.Empty)
