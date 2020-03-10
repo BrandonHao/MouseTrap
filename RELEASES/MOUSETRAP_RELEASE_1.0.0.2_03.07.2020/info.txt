@@ -1,0 +1,1 @@
+Add more dlls, change barcode object to picture object, print qr code as image first 03-02-2020

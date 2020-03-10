@@ -13,17 +13,22 @@
         <ComboBox x:Name="ComSelector" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="35,64,0,0" FontFamily="Nirmala UI Semilight" FontSize="14"/>
         <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="35,106,0,0" Foreground="Black" FontFamily="Nirmala UI Semilight" BorderBrush="{x:Null}" FontSize="14" Click="Connect_Button_Click"/>
         <Button x:Name="ExitButton" Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="35,360,0,0" Foreground="Black" FontFamily="Nirmala UI Semilight" BorderBrush="{x:Null}" FontSize="14" Click="Exit_Button_Click"/>
-        <TextBox x:Name="MinVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Min:" VerticalAlignment="Top" Margin="301,50,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
-        <TextBox x:Name="MaxVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Max:" VerticalAlignment="Top" Margin="301,100,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
-        <TextBox x:Name="VoltBox" HorizontalAlignment="Left" Height="23" Margin="395,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,150,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Bat. Voltage"/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="MACAddressBox" HorizontalAlignment="Left" Height="23" Margin="395,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="MAC Address:" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Leave Min and Max voltage empty for minimum voltage 3000 mV and no maximum voltage. All values measured in mV." VerticalAlignment="Top" Margin="532,48,0,0" Height="76" Width="222" FontFamily="Nirmala UI Semilight" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,250,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Lot Num:"/></TextBlock>
-        <TextBox x:Name="LotBox" HorizontalAlignment="Left" Height="23" Margin="395,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBox x:Name="VoltBox" HorizontalAlignment="Left" Height="23" Margin="395,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,50,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Bat. Voltage"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="MACAddressBox" HorizontalAlignment="Left" Height="23" Margin="395,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="MAC Address:" VerticalAlignment="Top" Margin="301,100,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,150,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Cust Num:"/></TextBlock>
+        <TextBox x:Name="LotBox" HorizontalAlignment="Left" Height="23" Margin="395,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Date:"/></TextBlock>
+        <TextBox x:Name="DateBox" HorizontalAlignment="Left" Height="23" Margin="395,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,250,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Product:"/></TextBlock>
+        <ComboBox x:Name="ProductSelector" HorizontalAlignment="Left" Margin="395,247,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="MinVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
+        <TextBlock x:Name="MinVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Min:" VerticalAlignment="Top" Margin="301,300,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
+        <TextBox x:Name="MaxVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
+        <TextBlock x:Name="MaxVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Max:" VerticalAlignment="Top" Margin="301,350,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
+        <TextBlock x:Name="DescBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Leave Min and Max voltage empty for minimum voltage 3000 mV and no maximum voltage. All values measured in mV." VerticalAlignment="Top" Margin="532,298,0,0" Height="76" Width="222" FontFamily="Nirmala UI Semilight" FontSize="14" Visibility="Hidden"/>
+
 
     </Grid>
 </Window>

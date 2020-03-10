@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DieCutLabel Version="8.0" Units="twips">
+	<PaperOrientation>Portrait</PaperOrientation>
+	<Id>Small30332</Id>
+	<IsOutlined>false</IsOutlined>
+	<PaperName>30332 1 in x 1 in</PaperName>
+	<DrawCommands>
+		<RoundRectangle X="0" Y="0" Width="1440" Height="1440" Rx="180" Ry="180" />
+	</DrawCommands>
+	<ObjectInfo>
+		<TextObject>
+			<Name>TEXT</Name>
+			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
+			<LinkedObjectName />
+			<Rotation>Rotation0</Rotation>
+			<IsMirrored>False</IsMirrored>
+			<IsVariable>False</IsVariable>
+			<GroupID>-1</GroupID>
+			<IsOutlined>False</IsOutlined>
+			<HorizontalAlignment>Center</HorizontalAlignment>
+			<VerticalAlignment>Top</VerticalAlignment>
+			<TextFitMode>AlwaysFit</TextFitMode>
+			<UseFullFontHeight>True</UseFullFontHeight>
+			<Verticalized>False</Verticalized>
+			<StyledText>
+				<Element>
+					<String xml:space="preserve">Test</String>
+					<Attributes>
+						<Font Family="Arial" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False" />
+						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" HueScale="100" />
+					</Attributes>
+				</Element>
+			</StyledText>
+		</TextObject>
+		<Bounds X="307.038860103627" Y="1196.5" Width="1016" Height="157.5" />
+	</ObjectInfo>
+	<ObjectInfo>
+		<ImageObject>
+			<Name>GRAPHIC</Name>
+			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
+			<LinkedObjectName />
+			<Rotation>Rotation0</Rotation>
+			<IsMirrored>False</IsMirrored>
+			<IsVariable>False</IsVariable>
+			<GroupID>-1</GroupID>
+			<IsOutlined>False</IsOutlined>
+			<Image>iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAVKSURBVHhe7d1BchAxDADBhP//GUjBB1AVQmO6L+G2u7Yz5YvI5/efPgACvv3+CXCeYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAxGn7+/Pz8/S/+tslsuv2xbtdN/88FNywgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIWBt+ng47vmRr3Tzn9nNes7lublhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQcXr4efKcLVvfc/k5r3Gu7583NywgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIMPw8dHlI9PK6TUzWYML+3D7XX9ywgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIMPw89D1IdGXXD5vzvXuuXbDAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgIzTw8+veW24duvdts6Ocz2zuW5uWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpCxNvzMzGRIdGsY1XOYmuzPFzcsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBgNP/Oe1wZ/Hes3uWEBGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAxum//Lw1wHp58PfyGkzebes5Wy6v22XTPXXDAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgIy14eetAVZDvO+924TzNrO1blNuWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpBxevj58hDvxGuDslu29vTyul3+/dn8PXXDAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgIzR8PNlrw2wXrY59Pqnts7B5Hu8m+Fn4D8gWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWScHn7eGq69/JyJw1s6srVuE6+t9cTW788XNywgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIeO4vP/PesLDh55kX180NC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjJGw8+Xhypf89pw7eR7ts7b5bWeMPwM8A8JFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARlrw8+vDZZOGBa+/W4Tl/f0tTX44oYFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGaeHn7cGZSe2vue150xM3m3i8nl7zXRP3bCADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgw/Dz0Nb3TIdEr3ptYHrLa4PZ0/1xwwIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMw89DW98zHRL9U6+t9YQ1uM8NC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjJODz+/Zmvd7M97g8zOzi9uWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpCxNvzMjEHZ2+dt8j1bXlw3NywgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIGA0/A/wLblhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAxMfHD9wEs/V0BI9UAAAAAElFTkSuQmCC</Image>
+			<ScaleMode>Fill</ScaleMode>
+			<BorderWidth>0</BorderWidth>
+			<BorderColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<HorizontalAlignment>Center</HorizontalAlignment>
+			<VerticalAlignment>Center</VerticalAlignment>
+		</ImageObject>
+		<Bounds X="356.041450777203" Y="219" Width="963.779542033572" Height="963.779542033572" />
+	</ObjectInfo>
+</DieCutLabel>
