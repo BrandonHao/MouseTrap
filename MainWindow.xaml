@@ -28,6 +28,11 @@
         <TextBox x:Name="MaxVoltBox" HorizontalAlignment="Left" Height="23" Margin="395,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14" IsEnabled="False" Visibility="Hidden"/>
         <TextBlock x:Name="MaxVoltBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Voltage Max:" VerticalAlignment="Top" Margin="301,350,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89" Visibility="Hidden"/>
         <TextBlock x:Name="DescBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Leave Min and Max voltage empty for minimum voltage 3000 mV and no maximum voltage. All values measured in mV." VerticalAlignment="Top" Margin="532,298,0,0" Height="76" Width="222" FontFamily="Nirmala UI Semilight" FontSize="14" Visibility="Hidden"/>
+        <Image HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="207" Margin="35,169,0,0">
+            <Image.Source>
+                <BitmapImage UriSource="/Resources/Bell.jpg"/>
+            </Image.Source>
+        </Image>
 
 
     </Grid>
