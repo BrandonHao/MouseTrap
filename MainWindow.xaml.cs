@@ -50,7 +50,7 @@ namespace MouseTrap
             }
 
             ProductSelector.Items.Clear();
-            ProductSelector.Items.Add("IQ 24/27");
+            ProductSelector.Items.Add("IQ 24/7");
             ProductSelector.Items.Add("IQ EXPRESS");
             ProductSelector.Items.Add("IQ RAT TRAP");
 
