@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.Collections.Specialized;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -43,16 +45,19 @@ namespace MouseTrap
             _appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var ports = SerialPort.GetPortNames();
             ComSelector.Items.Clear();
-
+            
             foreach (var name in ports)
             {
                 ComSelector.Items.Add(name);
+
             }
 
             ProductSelector.Items.Clear();
             ProductSelector.Items.Add("IQ 24/7");
             ProductSelector.Items.Add("IQ EXPRESS");
             ProductSelector.Items.Add("IQ RAT TRAP");
+
+            LoadDefaults();
 
             if (!Directory.Exists(_appPath + "\\temp"))
             {
@@ -67,6 +72,21 @@ namespace MouseTrap
 
 
             _dataPort = new SerialPort();
+        }
+
+        private void LoadDefaults()
+        {
+            string defaultCom = Properties.Settings.Default.ComPort;
+            string defaultLotNum = Properties.Settings.Default.LotNum;
+            string defaultProduct = Properties.Settings.Default.ProductType;
+
+            Dispatcher?.Invoke(() =>
+            {
+                LotBox.Text = defaultLotNum;
+                ComSelector.SelectedValue = defaultCom;
+                ProductSelector.SelectedValue = defaultProduct;
+            });
+
         }
 
         private void DispatcherOnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -114,6 +134,8 @@ namespace MouseTrap
                     ConnectButton.IsEnabled = true;
                     MessageBox.Show("Com Port Already In Use!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                Properties.Settings.Default.ComPort = _dataPort.PortName;
+                Properties.Settings.Default.Save();
             }
             else
             {
@@ -225,7 +247,7 @@ namespace MouseTrap
                 macAddress = string.Join("", arr);
                 try
                 {
-                    int minVoltage = 3000;
+                    int minVoltage = 2820;
                     int maxVoltage = int.MaxValue;
                     int measuredVoltage = Convert.ToInt32(voltage);
                     if (minVoltString != string.Empty)
@@ -244,6 +266,18 @@ namespace MouseTrap
                         MessageBox.Show("Please specify a lot number!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                         _stringData = string.Empty;
                         return;
+                    }
+
+                    if(!Properties.Settings.Default.LotNum.Equals(lotNum))
+                    {
+                        Properties.Settings.Default.LotNum = lotNum;
+                        Properties.Settings.Default.Save();
+                    }
+
+                    if(!Properties.Settings.Default.ProductType.Equals(productType))
+                    {
+                        Properties.Settings.Default.ProductType = productType;
+                        Properties.Settings.Default.Save();
                     }
 
                     if (minVoltage < measuredVoltage && measuredVoltage < maxVoltage)
