@@ -8,6 +8,7 @@
 *.sln.docstates
 *.zip
 *.exe
+/temp/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

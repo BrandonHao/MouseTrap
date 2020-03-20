@@ -1,0 +1,1 @@
+Finalized version of 1.0.0.3 since 1.0.0.2 was technically an evaluation release. Finalized label size and other details that needed work. Also add Bell logo to UI. 03-10-2020

@@ -1,0 +1,1 @@
+Modified minimum voltage to 2820mV and added user setting feature which stores product type, lot number, and com port in between program instaces. Production release 1. 03-18-2020
