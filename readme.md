@@ -1,3 +1,5 @@
+# MouseTrap
+
 MouseTrap test fixture software for Smartwave Technologies. 
 
 Commissioned by Joseph Couse, developed and maintained by Brandon Hao. 
