@@ -17,7 +17,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,50,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Bat. Voltage"/><Run Text=":"/></TextBlock>
         <TextBox x:Name="MACAddressBox" HorizontalAlignment="Left" Height="23" Margin="395,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="MAC Address:" VerticalAlignment="Top" Margin="301,100,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,150,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Cust Num:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,150,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Cust. Num:"/></TextBlock>
         <TextBox x:Name="LotBox" HorizontalAlignment="Left" Height="23" Margin="395,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="301,200,0,0" FontFamily="Nirmala UI Semilight" FontSize="14" Width="89"><Run Text="Date:"/></TextBlock>
         <TextBox x:Name="DateBox" HorizontalAlignment="Left" Height="23" Margin="395,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Nirmala UI Semilight" FontSize="14"/>
